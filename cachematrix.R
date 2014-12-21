@@ -11,9 +11,13 @@ makeCacheMatrix <- function(x = matrix()) {
     x <<- y
     inv <<- NULL ## if we change the matrix, the cached inverse is no longer valid
   }
+  
+  ## create the getter/setter functions to retrieve and set the matrix and cached inverse
   get <- function() x
   setInverse <- function(inverse) inv <<- inverse
   getInverse <- function() inv
+  
+  ## return the list of getter/setter functions (the 'matrix' object)
   list(set = set, get = get,
        setInverse = setInverse,
        getInverse = getInverse)
